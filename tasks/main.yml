@@ -1,0 +1,22 @@
+---
+# tasks file for composer
+
+- name: Checking whether Composer is installed
+  stat:
+    path: "{{composer_install_dir}}/composer"
+  register: composer_path
+
+- name: Getting installed Composer version
+  shell: "{{php_executable}} {{composer_install_dir}}/composer --version 2>/dev/null || true"
+  register: composer_installed
+  when: composer_path.stat.exists
+  changed_when: (composer_installed.stdout.find(composer_version) == -1)
+
+- name: Installing Composer
+  shell: "curl -sS https://getcomposer.org/installer | {{php_executable}} -- --version {{composer_version}} --install-dir {{composer_install_dir}} --filename composer"
+  args:
+    warn: False
+  when: (composer_path.stat.exists == 0) or (composer_installed.stdout.find(composer_version) == -1)
+  changed_when: (composer_path.stat.exists == 0) or (composer_installed.stdout.find(composer_version) == -1)
+
+# vim: ts=2:sts=2:sw=2:et:syntax=yaml

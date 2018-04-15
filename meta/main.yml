@@ -1,0 +1,47 @@
+dependencies: []
+
+galaxy_info:
+  author: TheRealJohnDavies
+  description: Installs/updates Composer, a dependency manager for PHP apps.
+  license: MIT
+  min_ansible_version: 1.3
+  platforms:
+    - name: Amazon
+      versions:
+      - all
+    - name: Debian
+      versions:
+      - all
+    - name: EL
+      versions:
+      - all
+    - name: Fedora
+      versions:
+      - all
+    - name: FreeBSD
+      versions:
+      - all
+    - name: GenericBSD
+      versions:
+      - all
+    - name: GenericLinux
+      versions:
+      - all
+    - name: GenericUNIX
+      versions:
+      - all
+    - name: opensuse
+      versions:
+      - all
+    - name: SLES
+      versions:
+      - all
+    - name: Ubuntu
+      versions:
+      - all
+  galaxy_tags:
+    - composer
+    - packagist
+    - php
+    - web
+
